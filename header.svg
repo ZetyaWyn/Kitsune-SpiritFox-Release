@@ -1,0 +1,90 @@
+<svg width="900" height="170" viewBox="0 0 900 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neon-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="3.5" result="blur1" />
+      <feGaussianBlur stdDeviation="9" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Sweeping Light Beam Gradient -->
+    <linearGradient id="sweep-grad" x1="-100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F43F5E" />
+      <animate attributeName="x1" values="-100%;100%" dur="3.2s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="0%;200%" dur="3.2s" repeatCount="indefinite" />
+    </linearGradient>
+
+    <linearGradient id="fox-beam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6D00" />
+      <stop offset="50%" stop-color="#F43F5E" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&amp;family=Orbitron:wght@600&amp;display=swap');
+
+      .bg { fill: #08090C; }
+
+      .fox-base {
+        stroke: #FF6D00;
+        stroke-width: 1.5;
+        opacity: 0.22;
+      }
+
+      /* Traveling energy pulse around the fox */
+      .fox-runner {
+        stroke: url(#fox-beam);
+        stroke-width: 2.6;
+        stroke-linecap: round;
+        stroke-dasharray: 120 530;
+        animation: runFox 3.6s linear infinite;
+      }
+
+      .fox-eyes {
+        fill: #FF6D00;
+        animation: eyeGlow 2.4s ease-in-out infinite;
+      }
+
+      .title-base {
+        font-family: 'Orbitron', 'Cinzel', sans-serif;
+        font-weight: 600;
+        font-size: 36px;
+        letter-spacing: 8px;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        fill: #F8FAFC;
+        stroke: url(#sweep-grad);
+        stroke-width: 1.4;
+      }
+
+      @keyframes runFox {
+        from { stroke-dashoffset: 650; }
+        to { stroke-dashoffset: 0; }
+      }
+
+      @keyframes eyeGlow {
+        0%, 100% { opacity: 0.35; fill: #FF6D00; }
+        50% { opacity: 1; fill: #38BDF8; }
+      }
+    </style>
+  </defs>
+
+  <rect width="900" height="170" rx="16" class="bg" />
+
+  <!-- Kitsune Fox with Traveling Neon Energy Loop -->
+  <g transform="translate(380, 18) scale(1.4)" filter="url(#neon-glow)">
+    <path class="fox-base" d="M 50 88 L 16 54 L 22 14 L 40 34 L 50 31 L 60 34 L 78 14 L 84 54 Z" />
+    <path class="fox-runner" d="M 50 88 L 16 54 L 22 14 L 40 34 L 50 31 L 60 34 L 78 14 L 84 54 Z" />
+    <path class="fox-base" d="M 24 23 L 35 38 L 22 52 M 76 23 L 65 38 L 78 52 M 35 38 L 50 66 L 65 38" />
+    <polygon class="fox-eyes" points="33,52 43,57 36,59" />
+    <polygon class="fox-eyes" points="67,52 57,57 64,59" />
+    <polygon class="fox-eyes" points="47,76 53,76 50,81" />
+  </g>
+
+  <text x="450" y="92" class="title-base" filter="url(#neon-glow)">KITSUNE-SPIRITFOX</text>
+</svg>
